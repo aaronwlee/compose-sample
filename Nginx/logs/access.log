@@ -1,0 +1,2 @@
+172.18.0.1 - - [11/Jan/2020:21:37:00 +0000] "GET /api/posts HTTP/1.1" 502 559 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+172.18.0.1 - - [11/Jan/2020:21:37:01 +0000] "GET /favicon.ico HTTP/1.1" 404 555 "http://localhost:8080/api/posts" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"

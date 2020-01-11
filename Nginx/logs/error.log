@@ -1,0 +1,2 @@
+2020/01/11 21:37:00 [error] 6#6: *2 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: , request: "GET /api/posts HTTP/1.1", upstream: "http://172.18.0.3:3000/posts", host: "localhost:8080"
+2020/01/11 21:37:01 [error] 6#6: *2 open() "/etc/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.18.0.1, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/api/posts"
