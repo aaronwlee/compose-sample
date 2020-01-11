@@ -8,7 +8,6 @@ services:
       - ./Mongodb/data:/data/db
     env_file:
       - .env
-
   polling_server:
     build: ./PollingServer
     ports:
