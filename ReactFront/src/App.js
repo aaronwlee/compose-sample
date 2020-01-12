@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 
@@ -12,6 +11,7 @@ function App() {
             const resp = await axios.get('/api/posts');
             const respC = await axios.get('/api/count');
 
+            console.log(resp.data.data + ", " + respC.data.count)
             updatePosts(resp.data.data);
             updateCount(respC.data.count);
         }

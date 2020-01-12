@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const axios = require('axios');
-const Post = require('mongoose/Post');
+const Post = require('./src/mongoose/Post');
 
-const mongoUri = 'mongodb://root:root@mongodb:27017/admin';
+// const mongoUri = 'mongodb://root:root@mongodb:27017/admin';
 
-mongoose.connect(mongoUri, {useNewUrlParser: true});
+// mongoose.connect(mongoUri, {useNewUrlParser: true});
 
 app.get('/posts', async (req, res) => {
     console.log('Getting Posts Started!!!');
@@ -32,3 +32,11 @@ app.get('/posts', async (req, res) => {
 app.listen(port, () => {
     console.log(`server is listening at localhost:${port}`);
 });
+
+process.on("SIGINT", () => {
+    process.exit(0);
+})
+
+process.on("exit", (code) => {
+    mongoose.disconnect();
+})
