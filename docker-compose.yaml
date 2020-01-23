@@ -1,14 +1,14 @@
 version: "3"
 services:
-  nginx:
-    restart: always
-    build:
-      dockerfile: Dockerfile
-      context: ./Nginx
-    volumes:
-      - ./Nginx/logs:/var/log/nginx
-    ports:
-      - "8080:80"
+  # nginx:
+  #   restart: always
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: ./Nginx
+  #   volumes:
+  #     - ./Nginx/logs:/var/log/nginx
+  #   ports:
+  #     - "8080:80"
   # mongodb:
   #   build: ./Mongodb
   #   ports:
@@ -17,35 +17,35 @@ services:
   #     - ./Mongodb/data:/data/db
   #   env_file:
   #     - .env
-  polling_server:
-    build: ./PollingServer
-    ports:
-      - "${POLLING_SERVER_PORT}:3000"
-    volumes:
-      - /usr/app/node_modules
-      - ./PollingServer:/usr/app
-      - ./Shared/mongoose:/usr/app/src/mongoose
-    env_file:
-      - .env
+  # polling_server:
+  #   build: ./PollingServer
+  #   ports:
+  #     - "${POLLING_SERVER_PORT}:3000"
+  #   volumes:
+  #     - /usr/app/node_modules
+  #     - ./PollingServer:/usr/app
+  #     - ./Shared/mongoose:/usr/app/src/mongoose
+  #   env_file:
+  #     - .env
   express_server:
     # build: ExpressServer
-    image: express-server:latest
+    image: express_server
     ports:
-      - "${EXPRESS_SERVER_PORT}:3000"
-    volumes:
-      - /usr/app/node_modules
-      - ./ExpressServer:/usr/app
-      - ./Shared/mongoose:/usr/app/src/mongoose
+      - 6400:6400
+      # - "${EXPRESS_SERVER_PORT}:3000"
+    # volumes:
+    #   - ./MainServer:/usr/app
     env_file:
       - .env
   react_front:
     build: ReactFront
     ports:
-      - "${REACT_FRONT_PORT}:3000"
-    volumes:
-      - /usr/app/node_modules
-      - ./ReactFront:/usr/app
-    env_file:
-      - .env
+      - 3000:6300
+    # ports:
+    #   - "${REACT_FRONT_PORT}:3000"
+    # volumes:
+    #   - ./ReactFront:/usr/app
+    # env_file:
+    #   - .env
   redis:
     image: redis:5

@@ -9,6 +9,7 @@ Test docker
 ## reference
 
 ```
+docker build -t <project_name> -f Dockerfile .
 docker build -t "nodejs-test" .
 docker run --env-file .env -p 8000:9000 nodejs-test
 docker login
