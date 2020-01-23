@@ -165,11 +165,11 @@ logLevel = "DEBUG"
    [frontends.my-ui]
    backend = "my-ui"
       [frontends.my-ui.routes.route_to_ui]
-      rule = "Host:172.17.0.1"
+      rule = "Host:test.wooseok.ca"
    [frontends.my-server]
    backend = "my-server"
       [frontends.my-server.routes.route_to_app]
-      rule = "Host:172.17.0.1;PathPrefix:/admin,/admin/{adminPath:.+},/api/{appPath:.+},/auth/{authPath:.+},/graphql"
+      rule = "Host:test.wooseok.ca;PathPrefix:/admin,/admin/{adminPath:.+},/api/{appPath:.+},/auth/{authPath:.+},/graphql"
 
 ################################################################
 # Backends Definition
@@ -177,9 +177,9 @@ logLevel = "DEBUG"
 [backends]
    [backends.my-ui]
       [backends.my-ui.servers.server1]
-      url = "http://172.17.0.1:6300"
+      url = "http://192.168.2.12:6300"
       weight = 1
    [backends.my-server]
       [backends.my-server.servers.server1]
-      url = "http://172.17.0.1:6400"
+      url = "http://192.168.2.12:6400"
       weight = 1

@@ -1,19 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
 
 function App() {
     const [posts, updatePosts] = useState([]);
-    const [count, updateCount] = useState(null);
+    // const [count, updateCount] = useState(null);
 
     useEffect(() => {
         async function fetchData() {
-            const resp = await axios.get('/api/posts');
-            const respC = await axios.get('/api/count');
+            const resp = await axios.get('/api/ping');
 
-            console.log(resp.data.data + ", " + respC.data.count)
-            updatePosts(resp.data.data);
-            updateCount(respC.data.count);
+            // console.log(resp.data.data + ", " + respC.data.count)
+            updatePosts(resp.data);
+            // updateCount(respC.data.count);
         }
 
         fetchData();
@@ -22,9 +21,9 @@ function App() {
     return (
         <div className="App">
             <div>
-                count: {count}
+                posts: {posts}
             </div>
-            {posts.map((x) => {
+            {/* {posts.map((x) => {
                 return (
                     <div style={{
                         border: '1px solid #000000',
@@ -44,7 +43,7 @@ function App() {
                         </a>
                     </div>
                 )
-            })}
+            })} */}
         </div>
     )
         ;

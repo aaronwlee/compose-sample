@@ -1,14 +1,14 @@
 version: "3"
 services:
-  # nginx:
-  #   restart: always
-  #   build:
-  #     dockerfile: Dockerfile
-  #     context: ./Nginx
-  #   volumes:
-  #     - ./Nginx/logs:/var/log/nginx
-  #   ports:
-  #     - "8080:80"
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./Nginx
+    volumes:
+      - ./Nginx/logs:/var/log/nginx
+    ports:
+      - "8080:80"
   # mongodb:
   #   build: ./Mongodb
   #   ports:
@@ -28,24 +28,30 @@ services:
   #   env_file:
   #     - .env
   express_server:
-    # build: ExpressServer
+    # build: MainServer
     image: express_server
+    deploy:
+      replicas: 2
     ports:
-      - 6400:6400
+      - 4000:3000
       # - "${EXPRESS_SERVER_PORT}:3000"
     # volumes:
     #   - ./MainServer:/usr/app
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
   react_front:
-    build: ReactFront
+    # build: ReactFront
+    image: react_front
     ports:
-      - 3000:6300
-    # ports:
-    #   - "${REACT_FRONT_PORT}:3000"
+      - 3000:3000
+      # - "${REACT_FRONT_PORT}:3000"
     # volumes:
     #   - ./ReactFront:/usr/app
     # env_file:
     #   - .env
   redis:
     image: redis:5
+
+# networks:
+#   backend:
+#     driver: overlay

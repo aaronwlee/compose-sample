@@ -12,5 +12,5 @@ RUN yarn build
 RUN rm -rf node_modules
 RUN yarn install --production
 
-EXPOSE 6400
+EXPOSE 4000
 CMD [ "node", "dist/server.js" ]
